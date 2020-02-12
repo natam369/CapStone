@@ -41,10 +41,14 @@ node {
         server.upload(uploadSpec)
         
         }
+	 
+	 def project_path="Pipeline/"
+	 dir(project_path) {
         
    stage('Docker-Stage-Deployment') {
    sh label: '', script: 'docker-compose up -d --build'
   }
+	 }
 	 stage('Deploy Approval') { 
 input "Deploy to prod?" 
 }
